@@ -4,13 +4,13 @@ import 'package:pam_lab2/recipecard.dart';
 class FeaturedRecipes extends StatelessWidget {
   final List<Map<String, dynamic>> recipes = [
     {
-      'imagePath': 'assets/greek_salad.jpg',
+      'imagePath': 'assets/images/classic_greek_salad.png',
       'title': 'Classic Greek Salad',
       'rating': 4.5,
       'time': '15 Mins',
     },
     {
-      'imagePath': 'assets/coleslaw.jpg',
+      'imagePath': 'assets/images/crunchy_nut_coleslaw.png',
       'title': 'Crunchy Nut Coleslaw',
       'rating': 3.5,
       'time': '10 Mins',

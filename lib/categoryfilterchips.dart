@@ -12,11 +12,11 @@ class _CategoryFilterChipsState extends State<CategoryFilterChips> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 40,
+      height: 30,
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
         itemCount: categories.length,
-        separatorBuilder: (_, __) => SizedBox(width: 12),
+        separatorBuilder: (_, __) => SizedBox(width: 1),
         itemBuilder: (context, index) {
           bool isSelected = index == selectedIndex;
           return GestureDetector(
@@ -26,7 +26,7 @@ class _CategoryFilterChipsState extends State<CategoryFilterChips> {
               });
             },
             child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 7),
               decoration: BoxDecoration(
                 color: isSelected ? Color(0xFF2E7D7B) : Colors.transparent,
                 borderRadius: BorderRadius.circular(20),
@@ -34,9 +34,9 @@ class _CategoryFilterChipsState extends State<CategoryFilterChips> {
               child: Text(
                 categories[index],
                 style: TextStyle(
-                  color: isSelected ? Colors.white : Colors.grey[600],
+                  color: isSelected ? Colors.white : Color(0xFF2E7D7B),
                   fontWeight: isSelected ? FontWeight.w600 : FontWeight.w400,
-                  fontSize: 14,
+                  fontSize: 11,
                 ),
               ),
             ),

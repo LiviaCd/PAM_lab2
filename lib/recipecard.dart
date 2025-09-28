@@ -17,55 +17,71 @@ class RecipeCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 160,
+      width: 150,
       decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(20),
+        color: Color(0xFFD9D9D9),
+        borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            color: Colors.grey.withOpacity(0.1),
-            spreadRadius: 1,
+            color: Colors.black.withOpacity(0.08),
             blurRadius: 10,
+            offset: Offset(0, 4),
           ),
         ],
       ),
       child: Padding(
-        padding: EdgeInsets.all(12),
+        padding: const EdgeInsets.all(16),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            // Recipe image with rating badge - positioned higher
             Stack(
+              clipBehavior: Clip.none,
               children: [
-                Container(
-                  height: 100,
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15),
-                    image: DecorationImage(
-                      image: AssetImage(imagePath),
-                      fit: BoxFit.cover,
+                // Circular food image - moved up
+                Transform.translate(
+                  offset: Offset(0, -55),
+                  child: Container(
+                    width: 100,
+                    height: 100,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      image: DecorationImage(
+                        image: AssetImage(imagePath),
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
                 ),
+                // Rating badge
                 Positioned(
                   top: 8,
-                  right: 8,
+                  right: -8,
                   child: Container(
                     padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                     decoration: BoxDecoration(
-                      color: Colors.white.withOpacity(0.9),
+                      color: Color(0xFFFFF3CD),
                       borderRadius: BorderRadius.circular(12),
+                      border: Border.all(
+                        color: Colors.white,
+                        width: 1,
+                      ),
                     ),
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Icon(Icons.star, color: Colors.amber, size: 16),
-                        SizedBox(width: 2),
+                        Icon(
+                          Icons.star,
+                          color: Color(0xFFFF8C00),
+                          size: 12,
+                        ),
+                        SizedBox(width: 4),
                         Text(
                           rating.toString(),
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 12,
+                            color: Colors.black87,
                           ),
                         ),
                       ],
@@ -74,38 +90,62 @@ class RecipeCard extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(height: 12),
+            SizedBox(height: 4), // Redus spațiul pentru a compensa imaginea ridicată
+            // Recipe title
             Text(
               title,
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 16,
                 color: Colors.black87,
+                height: 1.2,
               ),
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
+              textAlign: TextAlign.center,
             ),
-            SizedBox(height: 8),
+            SizedBox(height: 16),
+            // Time and bookmark section
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                Text(
-                  'Time',
-                  style: TextStyle(
-                    color: Colors.grey[500],
-                    fontSize: 12,
+                // Time column
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Time',
+                      style: TextStyle(
+                        color: Colors.grey[500],
+                        fontSize: 12,
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                    SizedBox(height: 4),
+                    Text(
+                      time,
+                      style: TextStyle(
+                        fontWeight: FontWeight.w600,
+                        fontSize: 14,
+                        color: Colors.black87,
+                      ),
+                    ),
+                  ],
+                ),
+                // Bookmark icon
+                Container(
+                  padding: EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                    color: Color(0xFFF8F9FA),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: Icon(
+                    Icons.bookmark_outline,
+                    size: 16,
+                    color: Colors.grey[600],
                   ),
                 ),
-                Spacer(),
-                Text(
-                  time,
-                  style: TextStyle(
-                    fontWeight: FontWeight.w600,
-                    fontSize: 12,
-                    color: Colors.black87,
-                  ),
-                ),
-                SizedBox(width: 8),
-                Icon(Icons.bookmark_outline, size: 16, color: Colors.grey[400]),
               ],
             ),
           ],

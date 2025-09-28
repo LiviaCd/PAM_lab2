@@ -55,6 +55,9 @@ flutter:
 
     assets:
       - assets/icons/avatar.png
+      - assets/icons/filter.png
+      - assets/images/classic_greek_salad.png
+      - assets/images/crunchy_nut_coleslaw.png
 
     fonts:
       - family: Poppins
