@@ -20,7 +20,7 @@ class FeaturedRecipes extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 220,
+      height: 300, // Increased height to accommodate the protruding images
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
         itemCount: recipes.length,

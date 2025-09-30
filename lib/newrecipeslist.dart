@@ -9,7 +9,7 @@ class NewRecipesList extends StatelessWidget {
       'author': 'James Milner',
       'rating': 5,
       'time': '20 mins',
-      'imagePath': 'assets/steak.jpg',
+      'imagePath': 'assets/images/steak.png',
     },
     {
       'title': 'Pilaf sweet...',
@@ -22,16 +22,22 @@ class NewRecipesList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: recipes.map((recipe) {
-        return NewRecipeCard(
-          title: recipe['title'],
-          author: recipe['author'],
-          rating: recipe['rating'],
-          time: recipe['time'],
-          imagePath: recipe['imagePath'],
-        );
-      }).toList(),
+    return SizedBox(
+      height: 110, // Proper height for the cards
+      child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        itemCount: recipes.length,
+        itemBuilder: (context, index) {
+          final recipe = recipes[index];
+          return NewRecipeCard(
+            title: recipe['title'],
+            author: recipe['author'],
+            rating: recipe['rating'],
+            time: recipe['time'],
+            imagePath: recipe['imagePath'],
+          );
+        },
+      ),
     );
   }
 }

@@ -58,6 +58,8 @@ flutter:
       - assets/icons/filter.png
       - assets/images/classic_greek_salad.png
       - assets/images/crunchy_nut_coleslaw.png
+      - assets/images/steak.png
+      - assets/images/jamesMiller.png
 
     fonts:
       - family: Poppins
