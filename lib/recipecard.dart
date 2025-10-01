@@ -1,158 +1,150 @@
 import 'package:flutter/material.dart';
 
 class RecipeCard extends StatelessWidget {
-  final String imagePath;
   final String title;
   final double rating;
   final String time;
+  final String imagePath;
 
   const RecipeCard({
-    required this.imagePath,
+    super.key,
     required this.title,
     required this.rating,
     required this.time,
-    Key? key,
-  }) : super(key: key);
+    required this.imagePath,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Positioned(
-      top: 100,
+    const cardWidth = 150.0;
+    const imageSize = 110.0;
 
-      //offset: const Offset(0, 60),
-      child: Container(
-        width: 160,
-        height: 200,
-        decoration: BoxDecoration(
-          color: const Color(0xFFD9D9D9),
-          borderRadius: BorderRadius.circular(16),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.08),
-              blurRadius: 10,
-              offset: const Offset(0, 4),
-            ),
-          ],
-        ),
-        child: Stack(
-          clipBehavior: Clip.none,
-          alignment: Alignment.topCenter,
-          children: [
-            Positioned(
-              top: -60,
+    return SizedBox(
+      width: cardWidth,
+      child: Stack(
+        clipBehavior: Clip.none,
+        children: [
+          Positioned(
+            top: 55,
+            left: 0,
+            right: 0,
+            child: InkWell(
+              onTap: () => Navigator.pushNamed(context, '/recipe'),
               child: Container(
-                width: 120,
-                height: 120,
+                height: 176,
                 decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  image: DecorationImage(
-                    image: AssetImage(imagePath),
-                    fit: BoxFit.cover,
-                  ),
+                  color: const Color(0xFFD9D9D9),
+                  borderRadius: BorderRadius.circular(16),
                 ),
-              ),
-            ),
-            Positioned(
-              top: -30,
-              right: -15,
-              child: Container(
-                padding:
-                const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                decoration: BoxDecoration(
-                  color: const Color(0xFFFFE1B3),
-                  borderRadius: BorderRadius.circular(12),
-                  border: Border.all(
-                    color: const Color(0xFFFFE1B3),
-                    width: 1,
-                  ),
+                padding: const EdgeInsets.only(
+                  top: 71,
+                  left: 10,
+                  right: 10,
+                  bottom: 10,
                 ),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Icon(
-                      Icons.star,
-                      color: Color(0xFFFF8C00),
-                      size: 12,
-                    ),
-                    const SizedBox(width: 4),
                     Text(
-                      rating.toString(),
+                      title,
+                      textAlign: TextAlign.center,
                       style: const TextStyle(
+                        fontSize: 14,
                         fontWeight: FontWeight.bold,
-                        fontSize: 12,
-                        color: Colors.black87,
+                        color: Color(0xFF484848),
                       ),
+                    ),
+                    const Spacer(),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        // time column (anchored bottom-left)
+                        Column(
+                          mainAxisSize: MainAxisSize.min,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Text(
+                              'Time',
+                              style: TextStyle(
+                                fontSize: 11,
+                                color: Color(0xFFA9A9A9),
+                              ),
+                            ),
+                            const SizedBox(height: 5),
+                            Text(
+                              time,
+                              style: const TextStyle(
+                                fontSize: 11,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                          ],
+                        ),
+
+                        const Spacer(),
+                        SizedBox(
+                          height: 24,
+                          width: 24,
+                          child: Container(
+                            decoration: BoxDecoration(color: Colors.white, shape: BoxShape.circle),
+                            child: Center(
+                              child: GestureDetector(
+                                onTap: () {},
+                                child: Icon(Icons.bookmark_add, size: 16, color: Colors.grey),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),
               ),
             ),
-            Positioned(
-              top: 70,
-              left: 16,
-              right: 16,
-              bottom: 0,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text(
-                    title,
-                    style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 16,
-                      color: Colors.black87,
-                      height: 1.2,
-                    ),
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                    textAlign: TextAlign.center,
-                  ),
-                  const SizedBox(height: 8),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Time',
-                        style: TextStyle(
-                          color: Colors.grey[500],
-                          fontSize: 12,
-                          fontWeight: FontWeight.w400,
-                        ),
-                      ),
-                      const SizedBox(height: 4),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Text(
-                            time,
-                            style: const TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 14,
-                              color: Colors.black87,
-                            ),
-                          ),
-                          Container(
-                            padding: const EdgeInsets.all(4),
-                            decoration: BoxDecoration(
-                              color: const Color(0xFFF8F9FA),
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            child: Icon(
-                              Icons.bookmark_outline,
-                              size: 16,
-                              color: Colors.grey[600],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ],
+          ),
+
+          Positioned(
+            top: 0,
+            left: (cardWidth - imageSize) / 2,
+            child: SizedBox(
+              width: imageSize,
+              height: imageSize,
+              child: ClipOval(
+                child: Image.asset(
+                  imagePath,
+                  width: imageSize,
+                  height: imageSize,
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
-          ],
-        ),
+          ),
+
+          Positioned(top: 30, right: 0,
+              child:
+          Container(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 6,
+              vertical: 2,
+            ), // spacing inside
+            decoration: BoxDecoration(
+              color: Color(0xFFFFE1B3), // background
+              borderRadius: BorderRadius.circular(12), // rounded corners
+            ),
+            child: Row(
+              mainAxisSize: MainAxisSize.min, // shrink to fit contents
+              children: [
+                const Icon(Icons.star, size: 14, color: Color(0xFFFFC107)),
+                const SizedBox(width: 4),
+                Text(
+                  rating.toStringAsFixed(1),
+                  style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w600),
+                ),
+              ],
+            ),
+          ),
+          ),
+        ],
       ),
     );
   }
