@@ -38,30 +38,44 @@ class UserInformation extends StatelessWidget {
   }
 }
 
+
 class UserDescription extends StatelessWidget {
-  const UserDescription({super.key, required this.name, required this.address});
+  const UserDescription({
+    super.key,
+    required this.name,
+    required this.address,
+  });
+
   final String name;
   final String address;
 
   @override
   Widget build(BuildContext context) {
     return Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        CircleAvatar(backgroundImage: NetworkImage('https://i.pravatar.cc/')),
+        CircleAvatar(
+          radius: 20,
+          backgroundImage: const AssetImage('assets/images/laura.png'),
+        ),
         const SizedBox(width: 10),
         Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
               name,
-              style: TextStyle(fontWeight: FontWeight.w600, fontSize: 14),
+              style: const TextStyle(
+                fontWeight: FontWeight.w600,
+                fontSize: 14,
+              ),
             ),
             Row(
               children: [
+                const Icon(Icons.location_on, color: Color(0xFF129575), size: 14),
                 const SizedBox(width: 2),
-                Icon(Icons.location_on, color: Color(0xFF129575)),
                 Text(
                   address,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontWeight: FontWeight.w500,
                     fontSize: 11,
                     color: Color(0xFFA9A9A9),
@@ -75,3 +89,4 @@ class UserDescription extends StatelessWidget {
     );
   }
 }
+
