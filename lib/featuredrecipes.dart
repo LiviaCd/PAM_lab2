@@ -14,13 +14,19 @@ class FeaturedRecipes extends StatelessWidget {
       'title': 'Crunchy Nut Coleslaw',
       'rating': 3.5,
       'time': '10 Mins',
-    }
+    },
+    {
+      'imagePath': 'assets/images/classic_greek_salad.png',
+      'title': 'Classic Greek Salad',
+      'rating': 4.5,
+      'time': '15 Mins',
+    },
   ];
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 300, // Increased height to accommodate the protruding images
+      height: 250,
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
         itemCount: recipes.length,

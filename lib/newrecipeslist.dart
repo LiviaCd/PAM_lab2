@@ -10,20 +10,22 @@ class NewRecipesList extends StatelessWidget {
       'rating': 5,
       'time': '20 mins',
       'imagePath': 'assets/images/steak.png',
+      'authorImagePath': 'assets/images/jamesMilner.png',
     },
     {
       'title': 'Pilaf sweet...',
       'author': 'Laura',
       'rating': 5,
       'time': '25 mins',
-      'imagePath': 'assets/pilaf.jpg',
+      'imagePath': 'assets/images/steak.png',
+      'authorImagePath': 'assets/images/laura.png',
     },
   ];
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 110, // Proper height for the cards
+      height: 150,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: recipes.length,
@@ -35,6 +37,7 @@ class NewRecipesList extends StatelessWidget {
             rating: recipe['rating'],
             time: recipe['time'],
             imagePath: recipe['imagePath'],
+            authorImagePath: recipe['authorImagePath'],
           );
         },
       ),

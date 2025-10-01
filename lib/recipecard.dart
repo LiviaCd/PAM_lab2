@@ -29,7 +29,7 @@ class RecipeCard extends StatelessWidget {
             left: 0,
             right: 0,
             child: InkWell(
-              onTap: () => Navigator.pushNamed(context, '/recipe'),
+              onTap: () => Navigator.pushNamed(context, '/recipepage'),
               child: Container(
                 height: 176,
                 decoration: BoxDecoration(

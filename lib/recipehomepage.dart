@@ -77,11 +77,11 @@ class RecipeHomePage extends StatelessWidget {
               CategoryFilterChips(),
               SizedBox(height: 24),
               FeaturedRecipes(),
-              SizedBox(height: 32),
+              SizedBox(height: 2),
               SectionTitle('New Recipes'),
               SizedBox(height: 8),
               NewRecipesList(),
-              SizedBox(height: 20), // Add some bottom padding
+              SizedBox(height: 2),
             ],
           ),
         ),
